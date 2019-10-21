@@ -31,8 +31,29 @@ def index(request):
     #     product.updated_price=updated_price
     #     product.save()
 
+
+    url='https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=FGXM91S8527CSY369PG9'
+    # browser = webdriver.PhantomJS(executable_path = "C:\\Program Files\\phantomjs-2.1.1-windows\\bin")
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    browser = webdriver.Chrome(chrome_options=options)
+    browser.get(url)
+    html = browser.page_source
+    soup = BeautifulSoup(html, 'lxml')
+
+    
+    find_img = soup.find_all("div",class_="a-row layer")
+    find_img = find_img[0:6]
+
+    output_list = []
+    for i in find_img:
+        output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
+
+
+
     context={
-        'all_products':Product.objects.all()
+        'all_products':Product.objects.all(),
+        'deal_products':output_list
     }
     return render(request,"deal_app/index.html",context)
 def sort(request):
@@ -80,13 +101,18 @@ def deals(request):
     browser.get(url)
     html = browser.page_source
     soup = BeautifulSoup(html, 'lxml')
-    # find_img = soup.find(id="101_dealView_0")
-    find_img = soup.find_all("div",class_="a-row layer").attrs
-    for i in find_img:
-        print(i.attrs)
-        # print(find_img[i])
- 
+    
+    find_img = soup.find_all("div",class_="a-row layer")
+    find_img = find_img[0:6]
 
+    output_list = []
+    for i in find_img:
+        output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
+    print(output_list)
+
+    for i in output_list:
+        print(i[0])
+ 
     return redirect("/deals")
 
 

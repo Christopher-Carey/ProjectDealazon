@@ -82,14 +82,17 @@
         {% endfor %}
 
         <div class="jumbotron">
-            <div class="card" style="width:400px">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+          <h2>Current Deals</h2>
+          {% for deal in deal_products %}
+            <div class="card deal_card">
+                <img class="card-img-top" src="{{deal.1}}" alt="Card image">
                 <div class="card-body">
-                  <h4 class="card-title">John Doe</h4>
+                  <h4 class="card-title">{{deal.0}}</h4>
                   <p class="card-text">Some example text.</p>
                   <a href="#" class="btn btn-primary">See Profile</a>
                 </div>
-              </div>       
+              </div>   
+            {% endfor %}    
              </div>
     </div>
 

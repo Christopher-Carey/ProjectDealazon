@@ -9,7 +9,7 @@
     text-align: center;
 }
 .card{
-    width: 286px;
+    width: 345px;
     margin: 10px;
     height: 350px;
     display: inline-block;
@@ -26,5 +26,13 @@
 .card-img-top{
     width: 100px;
     height: 100px;
+}
+
+.deal_card{
+    width: 238px;
+    margin: 10px;
+    height: 350px;
+    display: inline-block;
+
 }
 
