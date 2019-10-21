@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.card{
+    width: 43%;
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 2px slategray;
+    /* height: 60px;
+    overflow: hidden;
+    transition: height ease-in 1s; */
+    
+}
+/* .card:hover{
+    height: 500px;
+
+} */
+.btn{
+    margin-top: 20px;
+}
+p{
+    margin:0;
+    /* margin-top: 10px; */
+
+}
+#profile_btn{
+    position: absolute;
+    top: 0;
+    margin-bottom: 20px;
+    width: 100px;
+    margin-left: 500px;
+    height: 35px;
+    overflow: hidden;
+    transition: height ease-in .5s;
+}
+#profile_btn:hover{
+    height: 60px;
+}
+.red{
+    margin-bottom: 5px;
+    color: red;
+    font-size: 10px;
+}
+.form-control{
+    margin-bottom: 10px;
+}

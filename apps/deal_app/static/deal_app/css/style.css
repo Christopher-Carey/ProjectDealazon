@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.jumbotron{
+    margin-bottom: 0;
+    text-align: center;
+}
+.card{
+    width: 286px;
+    margin: 10px;
+    height: 350px;
+    display: inline-block;
+}
+
+.card-title{
+    width: 100%;
+    /* display: block; */
+    /* height: 100px; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.card-img-top{
+    width: 100px;
+    height: 100px;
+}
+

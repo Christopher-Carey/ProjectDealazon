@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login_app/css/style copy.css' %}">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="registration card">
+                <h2>Registration</h2>
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <!-- =========================== -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "first_name"%}
+                    <p class="red">*First Name {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>First Name</p>
+                    <input class="form-control" type="text" name="first_name">
+                    <!-- =========================== -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "last_name"%}
+                    <p class="red">*Last Name {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>Last Name</p>
+                    <input class="form-control" type="text" name="last_name">
+                    <!-- =========================== -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "email" or message.extra_tags == "email_inuse" %}
+                    <p class="red">*Email {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>Email</p>
+                    <input class="form-control" type="email" name="email">
+                    <!-- ========================== -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "password" %}
+                    <p class="red">*Password {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>Password</p>
+                    <input class="form-control" type="password" name="password">
+                    <!-- =========================== -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "pwmatch"%}
+                    <p class="red">*Confirm PW {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>Confirm PW</p>
+                    <input class="form-control" type="password" name="pwconfirm">
+                    <!-- =========================== -->
+                    <input class="btn btn-dark" type="submit" value="Register">
+                </form>
+            </div>
+            <div class="login card">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "no_email" %}
+                    <p class="red">*Email {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>Email</p>
+                    <input class="form-control" type="email" name="login_email">
+
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.extra_tags == "wrong_password" %}
+                    <p class="red">*Password {{message}}</p>
+                    {%endif%}
+                    {%endfor%}
+                    {%endif%}
+                    <p>Password</p>
+                    <input class="form-control" type="password" name="login_password">
+                    <input class="btn btn-dark" type="submit" value="Log In">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
