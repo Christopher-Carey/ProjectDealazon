@@ -54,6 +54,7 @@
                   <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                 </div>
               </li>
+              <a class="btn btn-secondary" href="/deals/update_price">Get Current Prices</a>
             </ul>
           </div>
           <form  action="/deals/add_deal" method="POST">
@@ -62,6 +63,8 @@
             <input style="display: inline-block;" class="btn btn-secondary" type="submit" value="Add">
           </form>
         </nav>
+
+        {%if request.session.sort == 0%}
         
         {% for product in all_products %}
         <div class="card">
@@ -70,7 +73,7 @@
             <h4 class="card-title">{{product.title}}</h4>
             <small><i>Posted on {{product.created_at}}</i></small>
             <p class="card-text">Original Price: {{product.price}}</p>
-            <small><i>Last Checked on {{updated_at}}</i></small>
+            <small><i>Last Checked on {{product.updated_at}}</i></small>
             <p class="card-text">Current Price: {{product.updated_price}}</p>
             {% if product.updated_price < product.price %}
               <a href="{{product.url}}" class="btn btn-danger">See Products</a>
@@ -80,6 +83,29 @@
           </div>
         </div>      
         {% endfor %}
+
+        {%elif request.session.sort == 1%}
+
+        {% for product in sorted_price %}
+        <div class="card">
+          <img class="card-img-top" src="{{product.img}}"alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">{{product.title}}</h4>
+            <small><i>Posted on {{product.created_at}}</i></small>
+            <p class="card-text">Original Price: {{product.price}}</p>
+            <small><i>Last Checked on {{product.updated_at}}</i></small>
+            <p class="card-text">Current Price: {{product.updated_price}}</p>
+            {% if product.updated_price < product.price %}
+              <a href="{{product.url}}" class="btn btn-danger">See Products</a>
+            {%else%}
+              <a href="{{product.url}}" class="btn btn-primary">See Products</a>
+            {%endif%}
+          </div>
+        </div>      
+        {% endfor %}
+
+        {%endif%}
+
 
         <div class="jumbotron">
           <h2>Current Deals</h2>
@@ -92,7 +118,8 @@
                   <a href="#" class="btn btn-primary">See Profile</a>
                 </div>
               </div>   
-            {% endfor %}    
+            {% endfor %}   
+            <a class="btn btn-dark" href="/deals/current_deals">Get Current Deals!!</a> 
              </div>
     </div>
 
