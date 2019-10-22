@@ -7,32 +7,37 @@ import base64
 from selenium import webdriver
 
 def index(request):
-    if request.session["sort"] < 1:
+
+    if not 'deal' in request.session:
+        request.session["deal"] = 0
+    if not 'sort' in request.session:
         request.session["sort"] = 0
 
-    
 
-    
-    # url='https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=FGXM91S8527CSY369PG9'
-    # # browser = webdriver.PhantomJS(executable_path = "C:\\Program Files\\phantomjs-2.1.1-windows\\bin")
-    # options = webdriver.ChromeOptions()
-    # options.add_argument('headless')
-    # browser = webdriver.Chrome(chrome_options=options)
-    # browser.get(url)
-    # html = browser.page_source
-    # soup = BeautifulSoup(html, 'lxml')
-    
-    # find_img = soup.find_all("div",class_="a-row layer")
-    # find_img = find_img[0:6]
+    if request.session["deal"] == 0:
+        url='https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=FGXM91S8527CSY369PG9'
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        browser = webdriver.Chrome(chrome_options=options)
+        browser.get(url)
+        html = browser.page_source
+        soup = BeautifulSoup(html, 'lxml')
+        
+        find_img = soup.find_all("div",class_="a-row layer")
+        find_img = find_img[0:6]
 
-    # output_list = []
-    # for i in find_img:
-    #     output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
+        all_deals=Deal.objects.all()
+        for i,deal in zip(find_img,all_deals):
+            deal.title=i.contents[1].attrs['alt']
+            deal.img=i.contents[1].attrs['src']
+            deal.save()
+        request.session["deal"]=1
+
 
     context={
         'all_products':Product.objects.all(),
-        'sorted_price':Product.objects.order_by('price')
-        # 'deal_products':output_list
+        'sorted_price':Product.objects.order_by('price'),
+        'all_deals':Deal.objects.all()
     }
     return render(request,"deal_app/index.html",context)
 
@@ -85,10 +90,9 @@ def update_price(request):
         product.updated_price=price
         product.save()
     return redirect("/deals")
-    
+
 def deals(request):
     url='https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=FGXM91S8527CSY369PG9'
-    # browser = webdriver.PhantomJS(executable_path = "C:\\Program Files\\phantomjs-2.1.1-windows\\bin")
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
     browser = webdriver.Chrome(chrome_options=options)
@@ -102,32 +106,5 @@ def deals(request):
     output_list = []
     for i in find_img:
         output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
-
-
-
-
-
-
-    # headers ={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"}
-
-    url='https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=FGXM91S8527CSY369PG9'
-    # browser = webdriver.PhantomJS(executable_path = "C:\\Program Files\\phantomjs-2.1.1-windows\\bin")
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    browser = webdriver.Chrome(chrome_options=options)
-    browser.get(url)
-    html = browser.page_source
-    soup = BeautifulSoup(html, 'lxml')
-    
-    find_img = soup.find_all("div",class_="a-row layer")
-    find_img = find_img[0:6]
-
-    output_list = []
-    for i in find_img:
-        output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
-    print(output_list)
-
-    for i in output_list:
-        print(i[0])
  
     return redirect("/deals")

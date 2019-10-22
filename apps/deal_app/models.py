@@ -10,3 +10,9 @@ class Product(models.Model):
     updated_price=models.FloatField(default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Deal(models.Model):
+    title=models.CharField(max_length=255)
+    img=models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
