@@ -15,6 +15,9 @@ def login_page(request):
 def logout(request):
     del request.session["first_name"]
     del request.session["email"]
+    del request.session["deal"]
+    del request.session["sort"]
+
     return redirect("/")
 
 def login(request):
@@ -31,6 +34,7 @@ def login(request):
         if bcrypt.checkpw(request.POST['login_password'].encode(), user.password.encode()):
             request.session["first_name"]=user.first_name
             request.session["email"]=request.POST['login_email']
+
             return redirect("/success")
         else:
             messages.error(request,"Wrong Password",extra_tags="wrong_password")

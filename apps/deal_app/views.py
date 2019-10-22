@@ -5,8 +5,11 @@ import requests
 from bs4 import BeautifulSoup
 import base64
 from selenium import webdriver
+import time
+
 
 def index(request):
+    user=User.objects.get(email=request.session['email'])
 
     if not 'deal' in request.session:
         request.session["deal"] = 0
@@ -33,12 +36,13 @@ def index(request):
             deal.save()
         request.session["deal"]=1
 
-
+    print("done")
     context={
-        'all_products':Product.objects.all(),
-        'sorted_price':Product.objects.order_by('price'),
+        'all_products':user.who_posted.all(),
+        'sorted_price':user.who_posted.all().order_by('price'),
         'all_deals':Deal.objects.all()
     }
+    
     return render(request,"deal_app/index.html",context)
 
 def sort_price(request):
@@ -108,3 +112,35 @@ def deals(request):
         output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
  
     return redirect("/deals")
+
+def check_price(request):
+    print("got here")
+
+    user=User.objects.get(email=request.session['email'])
+    users_products=user.who_posted.all()
+
+    headers ={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"}
+    for product in users_products:
+        url=product.url
+        page = requests.get(url,headers=headers)
+        soup = BeautifulSoup(page.content,'lxml')
+
+        str_price = soup.find(id="priceblock_ourprice")
+        if str_price == None:
+            str_price = soup.find(id="priceblock_saleprice").get_text()
+        else:
+            str_price = soup.find(id="priceblock_ourprice").get_text()
+        price=str_price[1:8]
+        
+        product.updated_price=price
+        product.save()
+
+    for product in users_products:
+        if product.updated_price < product.price:
+            print("Go Buy!"+product.title)
+        else:
+            print("no changes")
+
+
+
+ 

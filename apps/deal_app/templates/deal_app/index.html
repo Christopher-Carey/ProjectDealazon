@@ -84,7 +84,9 @@
         <p class="card-text">Original Price: {{product.price}}</p>
         <small><i>Last Checked on {{product.updated_at}}</i></small>
 
-        {% if product.updated_price <= product.price %}
+        {% if product.updated_price == product.price %}
+        <p style="color:blue" class="card-text">Current Price: {{product.updated_price}}</p>
+        {% elif product.updated_price < product.price %}
         <p style="color:green" class="card-text">Current Price: {{product.updated_price}}</p>
         {%elif product.updated_price > product.price %}
         <p style="color:red" class="card-text">Current Price: {{product.updated_price}}</p>
@@ -110,7 +112,9 @@
         <small><i>Posted on {{product.created_at}}</i></small>
         <p class="card-text">Original Price: {{product.price}}</p>
         <small><i>Last Checked on {{product.updated_at}}</i></small>
-        {% if product.updated_price <= product.price %}
+        {% if product.updated_price == product.price %}
+        <p style="color:blue" class="card-text">Current Price: {{product.updated_price}}</p>
+        {% elif product.updated_price <= product.price %}
         <p style="color:green" class="card-text">Current Price: {{product.updated_price}}</p>
         {%elif product.updated_price > product.price %}
         <p style="color:red" class="card-text">Current Price: {{product.updated_price}}</p>
