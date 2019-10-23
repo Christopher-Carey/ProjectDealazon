@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^current_deals$', views.deals),
     url(r'^update_price$', views.update_price),
     url(r'^add_deal$', views.add_deal),
+    url(r'^user_page$', views.user_page),
 ]

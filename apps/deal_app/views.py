@@ -113,3 +113,29 @@ def deals(request):
         output_list.append([i.contents[1].attrs['alt'], i.contents[1].attrs['src']])
  
     return redirect("/deals")
+
+
+def user_page(request):
+    user=User.objects.get(email=request.session['email'])
+    all_products=user.who_posted.all()
+    uploaded_time=[]
+
+    for product in all_products:
+        dif=product.updated_at - product.created_at
+        product.days_logged=dif
+        product.save()
+
+        print(dif)
+    print(uploaded_time)
+
+
+
+
+    context={
+        'all_products':user.who_posted.all(),
+        'uploaded_days':uploaded_time
+    }
+
+    return render(request,"deal_app/user_page.html",context)
+
+

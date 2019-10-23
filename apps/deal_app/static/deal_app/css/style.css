@@ -26,6 +26,12 @@
 .card-img-top{
     width: 100px;
     height: 100px;
+    transition: 20ms ease-in;
+}
+.card-img-top:hover{
+    position: absolute;
+    width: 300px;
+    height: 300px ;
 }
 
 .deal_card{
@@ -38,6 +44,22 @@
 #dealpic{
     width: 500px;
 }
+td{
+    max-width: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+td a img{
+    width: 20px;
+    margin-right: 20px;
+}
+#eye{
+    width: 30px;
+}
+
+
 
 
 @media only screen and (max-width: 1192px) {
