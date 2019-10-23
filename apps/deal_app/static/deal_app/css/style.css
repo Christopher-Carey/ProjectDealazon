@@ -35,4 +35,43 @@
     display: inline-block;
 
 }
+#dealpic{
+    width: 500px;
+}
+
+
+@media only screen and (max-width: 1192px) {
+   .card{
+       width: 287px;
+   }
+   .deal_card{
+        width: 265px;
+   }
+   #dealpic {
+    width: 629px;
+}
+  }
+@media only screen and (max-width: 992px) {
+    .card{
+        width: 322px;
+    }
+    .deal_card{
+        width: 185px;
+    }
+    #dealpic {
+        width: 500px;
+    }
+}
+@media only screen and (max-width: 768px) {
+   .card{
+       margin-left: 5px;
+       width: 336px;
+   }
+   .deal_card{
+    width: 314px;
+}
+   #dealpic {
+    width: 500px;
+}
+  }
 

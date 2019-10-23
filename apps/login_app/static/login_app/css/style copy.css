@@ -59,3 +59,12 @@ p{
 .loading img{
     margin-left: 22px;
 }
+
+@media only screen and (max-width: 770px) {
+    .registration{
+        width: 90%;
+    }
+    .login{
+        width: 90%;
+    }
+  }
