@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
+    <script src="{% static 'login_app/js/script.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'login_app/css/style copy.css' %}">
     <title>Login</title>
 </head>
@@ -73,6 +75,7 @@
                     <input class="btn btn-dark" type="submit" value="Register">
                 </form>
             </div>
+        
             <div class="login card">
                 <h2>Login</h2>
                 <form action="/login" method="POST">
@@ -97,8 +100,13 @@
                     {%endif%}
                     <p>Password</p>
                     <input class="form-control" type="password" name="login_password">
-                    <input class="btn btn-dark" type="submit" value="Log In">
+                    <input id=login_btn class="btn btn-dark" type="submit" value="Log In">
                 </form>
+                <!-- <a id=login_btn class="btn btn-dark" href="">Login</a> -->
+            </div>
+            <div class="loading">
+                <p>Geting Deals</p>
+                <img src="{% static 'login_app/images/ajax-loader.gif' %}" alt="">
             </div>
         </div>
     </div>

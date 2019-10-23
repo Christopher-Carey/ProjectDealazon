@@ -48,3 +48,14 @@ p{
 .form-control{
     margin-bottom: 10px;
 }
+
+.loading{
+    display: none;
+    position: absolute;
+    top: 291px;
+    left: 662px;
+}
+
+.loading img{
+    margin-left: 22px;
+}
