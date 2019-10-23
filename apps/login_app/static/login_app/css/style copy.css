@@ -48,17 +48,26 @@ p{
 .form-control{
     margin-bottom: 10px;
 }
-
+.login{
+    position: relative;
+    
+}
 .loading{
+    padding: 10px;
     display: none;
+    background-color:rgba(112, 128, 144, 0.295);
+    box-shadow: 2px 2px 10px 2px black;
     position: absolute;
-    top: 291px;
-    left: 662px;
+    top: 111px;
+    left: 136px;
+    z-index: 0;
 }
 
 .loading img{
     margin-left: 22px;
 }
+
+
 
 @media only screen and (max-width: 770px) {
     .registration{
