@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'deal_app/css/style.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="{% static 'deal_app/js/ajax.js' %}"></script>
   <title>Logged In</title>
 </head>
 
@@ -58,12 +59,12 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/deals/sort_price">Sort by Price</a>
-              <a class="dropdown-item" href="/deals/sort">Sort </a>
-              <a class="dropdown-item" href="#">Edit Profile</a>
+              <!-- <a class="dropdown-item" href="/deals/sort">Sort </a> -->
+              <!-- <a class="dropdown-item" href="#">Edit Profile</a> -->
               <!-- <a class="dropdown-item" href="#">Something else here</a> -->
             </div>
           </li>
-          <a class="btn btn-secondary" href="/deals/update_price">Get Current Prices</a>
+          <a id="click_btn" class="btn btn-secondary" href="">Get Current Prices</a>
         </ul>
       </div>
       <form action="/deals/add_deal" method="POST">
@@ -215,6 +216,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>

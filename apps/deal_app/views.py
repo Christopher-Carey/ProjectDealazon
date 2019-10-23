@@ -36,7 +36,6 @@ def index(request):
             deal.save()
         request.session["deal"]=1
 
-    print("done")
     context={
         'all_products':user.who_posted.all(),
         'sorted_price':user.who_posted.all().order_by('price'),
@@ -76,6 +75,7 @@ def add_deal(request):
     return redirect("/deals")
 
 def update_price(request):
+
     headers ={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"}
     user=User.objects.get(email=request.session['email'])
     users_products=user.who_posted.all()
@@ -93,6 +93,7 @@ def update_price(request):
         
         product.updated_price=price
         product.save()
+    print("done")
     return redirect("/deals")
 
 def deals(request):
