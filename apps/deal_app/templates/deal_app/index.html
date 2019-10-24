@@ -25,17 +25,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/logout">Logout</a>
               <a class="dropdown-item" href="/deals/user_page">Manage Products</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
             </div>
           </li>
         </ul>
@@ -99,6 +96,7 @@
         {%else%}
         <a href="{{product.url}}" class="btn btn-primary">See Products</a>
         {%endif%}
+        <!-- <a class="edit_icon" href="/deals/user_page"><img src="{%static '/deal_app/images/icons8-edit-64.png'%}" alt=""></a> -->
       </div>
     </div>
     {% endfor %}
@@ -142,42 +140,39 @@
           </div>
           <div class="carousel-item">
             <div class="card deal_card">
-              <img class="card-img-top" src="{{all_deals.0.img}}" alt="Card image">
+              <a  href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746"><img class="card-img-top" src="{{all_deals.0.img}}" alt="Card image"></a>
               <div class="card-body">
                 <p class="card-text">{{all_deals.0.title}}</p>
               </div>
             </div>
-
             <div class="card deal_card">
-              <img class="card-img-top" src="{{all_deals.1.img}}" alt="Card image">
+              <a  href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746"><img class="card-img-top" src="{{all_deals.1.img}}" alt="Card image"></a>
               <div class="card-body">
                 <p class="card-text">{{all_deals.1.title}}</p>
               </div>
             </div>
-
               <div class="card deal_card">
-                <img class="card-img-top" src="{{all_deals.2.img}}" alt="Card image">
+                <a  href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746"><img class="card-img-top" src="{{all_deals.2.img}}" alt="Card image"></a>
                   <div class="card-body">
                     <p class=" card-text">{{all_deals.2.title}}</p>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-
               <div class="card deal_card">
-                <img class="card-img-top" src="{{all_deals.3.img}}" alt="Card image">
+                <a  href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746"><img class="card-img-top" src="{{all_deals.3.img}}" alt="Card image"></a>
                   <div class="card-body">
                     <p class=" card-text">{{all_deals.3.title}}</p>
               </div>
             </div>
               <div class="card deal_card">
-                <img class="card-img-top" src="{{all_deals.4.img}}" alt="Card image">
+                <a  href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746"><img class="card-img-top" src="{{all_deals.4.img}}" alt="Card image"></a>
                   <div class="card-body">
                     <p class=" card-text">{{all_deals.4.title}}</p>
               </div>
             </div>
               <div class="card deal_card">
-                <img class="card-img-top" src="{{all_deals.5.img}}" alt="Card image">
+                <a  href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746"><img class="card-img-top" src="{{all_deals.5.img}}" alt="Card image"></a>
                   <div class="card-body">
                     <p class=" card-text">{{all_deals.5.title}}</p>
               </div>

@@ -40,7 +40,7 @@
 .deal_card{
     width: 238px;
     margin: 10px;
-    height: 350px;
+    height: 260px;
     display: inline-block;
 
 }
@@ -72,6 +72,11 @@ td a img{
 
 .loading{
     display: none
+}
+
+.edit_icon img{
+    margin-left: 150px;
+    width: 30px;
 }
 
 @media only screen and (max-width: 1192px) {
