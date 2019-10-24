@@ -60,7 +60,7 @@
               <a class="dropdown-item" href="/deals/sort_price">Sort by Price</a>
             </div>
           </li>
-          <a id="click_btn" class="btn btn-secondary" href="">Get Current Prices</a>
+          <a id="click_btn" class="btn btn-secondary" href="/deals/update_prices">Get Current Prices</a>
         </ul>
       </div>
       <form action="/deals/add_deal" method="POST">
@@ -78,7 +78,7 @@
 
     {% for product in all_products %}
     <div class="card">
-      <img class="card-img-top" src="{{product.img}}" alt="Card image">
+      <img class="card-img-top product_img" src="{{product.img}}" alt="Card image">
       <div class="card-body">
         <h4 class="card-title">{{product.title}}</h4>
         <small><i>Posted on {{product.created_at}}</i></small>
@@ -144,27 +144,21 @@
             <div class="card deal_card">
               <img class="card-img-top" src="{{all_deals.0.img}}" alt="Card image">
               <div class="card-body">
-                <h4 class="card-title">{{deal.title}}</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                <p class="card-text">{{all_deals.0.title}}</p>
               </div>
             </div>
 
             <div class="card deal_card">
               <img class="card-img-top" src="{{all_deals.1.img}}" alt="Card image">
               <div class="card-body">
-                <h4 class="card-title">{{deal.title}}</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                <p class="card-text">{{all_deals.1.title}}</p>
               </div>
             </div>
 
               <div class="card deal_card">
                 <img class="card-img-top" src="{{all_deals.2.img}}" alt="Card image">
                   <div class="card-body">
-                    <h4 class="card-title">{{deal.title}}</h4>
-                    <p class=" card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <p class=" card-text">{{all_deals.2.title}}</p>
               </div>
             </div>
           </div>
@@ -173,31 +167,25 @@
               <div class="card deal_card">
                 <img class="card-img-top" src="{{all_deals.3.img}}" alt="Card image">
                   <div class="card-body">
-                    <h4 class="card-title">{{deal.title}}</h4>
-                    <p class=" card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <p class=" card-text">{{all_deals.3.title}}</p>
               </div>
             </div>
               <div class="card deal_card">
                 <img class="card-img-top" src="{{all_deals.4.img}}" alt="Card image">
                   <div class="card-body">
-                    <h4 class="card-title">{{deal.title}}</h4>
-                    <p class=" card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <p class=" card-text">{{all_deals.4.title}}</p>
               </div>
             </div>
               <div class="card deal_card">
                 <img class="card-img-top" src="{{all_deals.5.img}}" alt="Card image">
                   <div class="card-body">
-                    <h4 class="card-title">{{deal.title}}</h4>
-                    <p class=" card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <p class=" card-text">{{all_deals.5.title}}</p>
               </div>
             </div>              
           </div>
         </div>
     <br>
-    <a class="btn btn-dark" href="/deals/current_deals">Get Current Deals!!</a>
+    <a class="btn btn-dark" href="https://www.amazon.com/gp/goldbox/?pf_rd_p=dfe13b09-3b88-422f-bc64-07ef802d4688&pf_rd_r=WJH56AAZT0X6AW2KWZDC&nocache=1571935606746">Go To Current Deals!!</a>
   </div>
 
   </div>

@@ -75,7 +75,6 @@ def add_deal(request):
     return redirect("/deals")
 
 def update_price(request):
-
     headers ={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"}
     user=User.objects.get(email=request.session['email'])
     users_products=user.who_posted.all()

@@ -17,7 +17,6 @@ def logout(request):
     del request.session["email"]
     del request.session["deal"]
     del request.session["sort"]
-
     return redirect("/")
 
 def login(request):
@@ -34,12 +33,10 @@ def login(request):
         if bcrypt.checkpw(request.POST['login_password'].encode(), user.password.encode()):
             request.session["first_name"]=user.first_name
             request.session["email"]=request.POST['login_email']
-
-            return redirect("/success")
+            return redirect("/login_page")
         else:
             messages.error(request,"Wrong Password",extra_tags="wrong_password")
             return redirect("/")
-        
 
 def register(request):
     all_users=User.objects.all()
@@ -50,9 +47,6 @@ def register(request):
     if valid_email == False:
         messages.error(request,"Already in use",extra_tags="email_inuse")
         return redirect("/")
-
-
-
     errors = User.objects.basic_validation(request.POST)
     if len(errors)>0:
         for key,value in errors.items():
@@ -65,4 +59,4 @@ def register(request):
         request.session["first_name"]=request.POST['first_name']
         request.session["email"]=request.POST['email']
         User.objects.create(first_name=request.POST["first_name"],last_name=request.POST["last_name"],email=request.POST["email"],password=password_hash)
-        return redirect("/success")
+        return redirect("/login_page")
