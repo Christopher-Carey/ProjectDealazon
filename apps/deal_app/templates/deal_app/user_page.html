@@ -26,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/deals">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -44,11 +44,15 @@
     <div class="jumbotron">
       <h1>Welcome, {{request.session.first_name}}!</h1>
     </div>
-    <table class="table table-dark table-striped table-hover">
+    <table id="not_mobile" class="table table-dark table-striped table-hover">
+        <col width="130">
+        <col width="80">
+        <col width="80">
+        <col width="80">
       <thead>
         <tr>
           <th>Title</th>
-          <th>Price</th>
+          <th style="text-align: center;">Price</th>
           <th>Days Tracked</th>
         </tr>
       </thead>
@@ -56,9 +60,62 @@
         {% for product in all_products %}
         <tr>
           <td>{{product.title}}</td>
-          <td>{{product.price}}</td>
+          <td align="center">{{product.price}}</td>
           <td>{{product.days_logged}}</td>
-          <td><a href="/deals/delete/{{product.id}}"><img src="{% static 'deal_app/images/clear.png' %}" alt=""></a><a href="{{product.url}}"><img id="eye" src="{% static 'deal_app/images/eye.png' %}"></a></td>
+          <td align="center">
+            <div style="display: inline-block;" class="delete_menu">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static 'deal_app/images/clear.png' %}" alt="">
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item active" href="/logout">Are You Sure?</a>
+                    <a class="dropdown-item" href="/deals/delete/{{product.id}}">Yes</a>
+                    <a class="dropdown-item" href="#">Cancel</a>
+                  </div>
+            </a>
+          </div>
+            <a style="display: inline-block;" href="{{product.url}}"><img id="eye" src="{% static 'deal_app/images/eye.png' %}"></a></td>
+        </tr>
+        {% endfor %}
+     
+      </tbody>
+    </table>
+    <!-- ======Mobile====== -->
+    <table id=mobile_table class="table table-dark table-striped table-hover">
+        <col width="80">
+        <col width="110">
+        <col width="70">
+        <col width="200">
+  
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th style="text-align: center;">Price</th>
+          <th>Days Tracked</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in all_products %}
+        <tr>
+          <td><img style="width: 40px;" src="{{product.img}}" alt=""></td>
+          <td align="center">{{product.price}}</td>
+          <td>{{product.days_logged}}</td>
+          <td align="center">
+              <div style="display: inline-block;" class="delete_menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="{% static 'deal_app/images/clear.png' %}" alt="">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item active" href="/logout">Are You Sure?</a>
+                      <a class="dropdown-item" href="/deals/delete/{{product.id}}">Yes</a>
+                      <a class="dropdown-item" href="#">Cancel</a>
+                    </div>
+              </a>
+            </div>
+              <a style="display: inline-block;" href="{{product.url}}"><img id="eye" src="{% static 'deal_app/images/eye.png' %}"></a></td>
         </tr>
         {% endfor %}
      

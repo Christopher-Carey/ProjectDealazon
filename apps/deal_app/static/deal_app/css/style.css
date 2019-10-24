@@ -59,6 +59,20 @@ td a img{
     width: 30px;
 }
 
+#mobile_table{
+    display: none;
+}
+
+.dropdown-toggle::after{
+    display: none;
+}
+.add_btn{
+    /* display: none; */
+}
+.loading{
+    display: none
+}
+
 
 
 
@@ -95,5 +109,15 @@ td a img{
    #dealpic {
     width: 500px;
 }
-  }
+    #mobile_table{
+        display: block;
+    }
+    #not_mobile{
+        display: none;
+    }
+    /* td{
+        max-width: 20px;
+    } */
+  
+}
 
